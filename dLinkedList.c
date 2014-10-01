@@ -12,7 +12,7 @@ typedef struct ListNode{
 /*-------------------------------------------------------------------
  * name: insert
  * inputs:	**sPtr	(ListNode pointer) 
- *					value		(int)
+ *					value	(int)
  * outputs: <none>
  * Pushes any integer value to the begining of the linked list sPtr.
  * Call from main(): insert(&ListNodePtr, num);
@@ -22,10 +22,12 @@ void insert( ListNode **sPtr, int value ){
 	if(newPtr != NULL){
 		newPtr->data = value;
 		newPtr->prevPtr = NULL;
+		
 		// Set the prevPtr of original "first" node
 		if( !isEmpty(*sPtr) ){
 			(*sPtr)->prevPtr = newPtr;
 		}
+		
 		newPtr->nextPtr = *sPtr;
 		*sPtr = newPtr;
 	}
@@ -38,8 +40,8 @@ void insert( ListNode **sPtr, int value ){
 /*-------------------------------------------------------------------
  * name: delete
  * inputs:	**sPtr	(ListNode pointer) 
- *					value		(int)
- * outputs: value		(int)
+ *					value	(int)
+ * outputs:	value	(int)
  * Searches the linked list sPtr for the specified value to be deleted.
  * If value not found, prints error message and returns 0.
  * Call from main(): delete(&ListNodePtr, num);
@@ -47,7 +49,6 @@ void insert( ListNode **sPtr, int value ){
 int delete( ListNode **sPtr, int value ){
 	ListNode *tempPtr;
 	ListNode *currentPtr;
-	//ListNode *prevPtr;
 	
 	// If first item in list matches item to be removed
 	if(value == (*sPtr)->data){
